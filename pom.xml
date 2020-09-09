@@ -119,10 +119,18 @@
 				<configuration>
 					<from>
 						<image>openjdk:14-alpine</image>
+						<auth>
+						<username>${env.DOCKERHUB_LOGIN_ID}</username>
+						<password>${env.DOCKERHUB_LOGIN_PASS}</password>
+						</auth>
 						<credHelper>osxkeychain</credHelper>
 					</from>
 					<to>
 						<image>jahnavisrilekhamolleti/userservice:latest</image>
+						<auth>
+						<username>${env.DOCKERHUB_LOGIN_ID}</username>
+						<password>${env.DOCKERHUB_LOGIN_PASS}</password>
+						</auth>
 						<credHelper>osxkeychain</credHelper>
 					</to>
 				</configuration>
