@@ -122,7 +122,7 @@
 						<credHelper>osxkeychain</credHelper>
 					</from>
 					<to>
-						<image>jahnavimolleti/repo.docker.trisor:latest</image>
+						<image>jahnavisrilekhamolleti/userservice:latest</image>
 						<credHelper>osxkeychain</credHelper>
 					</to>
 				</configuration>
