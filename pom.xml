@@ -129,7 +129,6 @@
 							<username>${env.DOCKERHUB_LOGIN_ID}</username>
 							<password>${env.DOCKERHUB_LOGIN_PASS}</password>
 						</auth>
-						<credHelper>osxkeychain</credHelper>
 					</from>
 					<to>
 						<image>jahnavisrilekhamolleti/userservice:latest</image>
@@ -137,7 +136,6 @@
 							<username>${env.DOCKERHUB_LOGIN_ID}</username>
 							<password>${env.DOCKERHUB_LOGIN_PASS}</password>
 						</auth>
-						<credHelper>osxkeychain</credHelper>
 					</to>
 				</configuration>
 				<executions>
