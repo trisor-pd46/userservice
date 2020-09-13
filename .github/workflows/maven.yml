@@ -21,4 +21,7 @@ jobs:
       with:
         java-version: 14
     - name: Build with Maven
+      env:
+        DOCKERHUB_LOGIN_ID: ${{ secrets.DOCKERHUB_LOGIN_ID }}
+        DOCKERHUB_LOGIN_PASS: ${{ secrets.DOCKERHUB_LOGIN_PASS }}
       run: mvn -X package --file pom.xml
