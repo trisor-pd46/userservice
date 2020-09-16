@@ -92,7 +92,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
+			<scope>runtime</scope>
 		</dependency>
 		<!-- Testing dependencies End -->
 
@@ -141,15 +141,6 @@
 						<credHelper>osxkeychain</credHelper>
 					</to>
 				</configuration>
-				<executions>
-					<execution>
-						<id>build-and-push-docker-image</id>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

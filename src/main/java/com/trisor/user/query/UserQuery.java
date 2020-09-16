@@ -16,6 +16,5 @@ public class UserQuery  implements GraphQLQueryResolver{
 	public User getUserById(Long id) {
 		return userService.getUserById(id);
 	}
-	
 
 }

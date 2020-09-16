@@ -12,8 +12,7 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
-	
+
 	public User getUserById(Long userId) {
 		return userRepo.findById(userId).orElseThrow(()->new DataNotFoundException(String.format("Given user with id {} not found",userId)));
 	}

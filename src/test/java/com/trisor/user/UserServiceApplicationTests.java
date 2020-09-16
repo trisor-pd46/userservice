@@ -8,12 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.oembedler.moon.graphql.boot.GraphQLWebAutoConfiguration;
 
 @SpringBootTest
-@Disabled
 @EnableAutoConfiguration(exclude=GraphQLWebAutoConfiguration.class)
 class UserServiceApplicationTests {
 
 	@Test
-	@Disabled
 	void contextLoads() {
 	}
 
