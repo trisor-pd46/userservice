@@ -20,9 +20,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-@Value(value = "${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
-	private String jwkURI;
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
