@@ -10,3 +10,17 @@ workflows:
           executor:
             name: maven/default
             tag: '14.0'
+      - publish-docker:
+          requires:
+            - maven/test
+jobs:
+  publish-docker:
+    docker:
+      - image: circleci/openjdk:14.0-jdk-browsers
+    steps:
+      - checkout
+      - run: mvn dependency:go-offline
+      - run:
+          name: Publish Docker image with Jib
+          command: |
+            ./mvnw compile jib:build -B -DskipTests=true
