@@ -16,7 +16,7 @@ workflows:
 jobs:
   publish-docker:
     docker:
-      - image: circleci/openjdk:14.0-jdk-browsers
+      - image: cimg/openjdk:14.0
     steps:
       - checkout
       - run: mvn dependency:go-offline
