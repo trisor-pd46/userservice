@@ -10,10 +10,31 @@ workflows:
           executor:
             name: maven/default
             tag: '14.0'
+      - upload-artifact
       - publish-docker:
           requires:
             - maven/test
 jobs:
+  upload-artifact:
+    docker:
+      - image: cimg/openjdk:14.0
+    steps:
+      - checkout
+      - run: mvn dependency:go-offline
+      - run:
+          name: maven build
+          command: |
+            mvn clean install
+      - run:
+          name: Install jFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
+      - run:
+          name: Push to Artifactory
+          command: |
+            ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
+            ./jfrog rt u "userservice*/*.jar" backend --build-name=userservice --build-number=$CIRCLE_BUILD_NUM
+            ./jfrog rt bce userservice $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
+            ./jfrog rt bp userservice $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
   publish-docker:
     docker:
       - image: cimg/openjdk:14.0
