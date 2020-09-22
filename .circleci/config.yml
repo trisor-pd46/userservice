@@ -10,21 +10,17 @@ workflows:
           executor:
             name: maven/default
             tag: '14.0'
-      - upload-artifact
-      - publish-docker:
+      - upload-artifact:
           requires:
             - maven/test
+      - publish-docker:
+          requires:
+            - upload-artifact
 jobs:
   upload-artifact:
     docker:
       - image: cimg/openjdk:14.0
     steps:
-      - checkout
-      - run: mvn dependency:go-offline
-      - run:
-          name: maven build
-          command: |
-            mvn clean install
       - run:
           name: Install jFrog CLI
           command: curl -fL https://getcli.jfrog.io | sh
